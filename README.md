@@ -1,2 +1,2 @@
 # controlexpert
-Schneider Electric Control Expert Interop
+Schneider Electric Control Expert Toolkit
