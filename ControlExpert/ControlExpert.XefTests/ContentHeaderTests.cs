@@ -19,8 +19,8 @@ namespace ControlExpert.XefReaderTests
             var contentHeader = await xef.GetContentHeaderAsync();
 
             Assert.AreEqual("Projet", contentHeader.Name);
-            Assert.Greater(contentHeader.Version.Build, 0);
-            Assert.Greater(contentHeader.DateTime.Year, 2020);
+            Assert.GreaterOrEqual(contentHeader.Version.Build, 1);
+            Assert.GreaterOrEqual(contentHeader.DateTime.Year, 2021);
         }
     }
 }

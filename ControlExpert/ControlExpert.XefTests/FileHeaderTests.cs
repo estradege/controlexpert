@@ -20,9 +20,9 @@ namespace ControlExpert.XefReaderTests
 
             Assert.AreEqual("Schneider Automation", fileHeader.Company);
             Assert.True(fileHeader.Product.Contains("Control Expert"));
-            Assert.Greater(fileHeader.DateTime.Year, 2020);
+            Assert.GreaterOrEqual(fileHeader.DateTime.Year, 2021);
             Assert.AreEqual("Fichier source projet", fileHeader.Content);
-            Assert.Greater(fileHeader.DtdVersion, 40);
+            Assert.GreaterOrEqual(fileHeader.DtdVersion, 41);
         }
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <FEFExchangeFile>
-	<fileHeader company="Schneider Automation" product="Control Expert V14.1 - 191122A" dateTime="date_and_time#2021-2-16-17:54:4" content="Fichier source projet" DTDVersion="41"></fileHeader>
+	<fileHeader company="Schneider Automation" product="Control Expert V14.1 - 191122A" dateTime="date_and_time#2021-2-16-21:17:12" content="Fichier source projet" DTDVersion="41"></fileHeader>
 	<contentHeader name="Projet" version="0.0.2" dateTime="date_and_time#2021-2-16-17:52:24"></contentHeader>
 	<commParameters>
 		<PLCAddress address="SYS" media="USB" nbTries="3" timeout="3000" highSpeed="0"></PLCAddress>
@@ -88,16 +88,25 @@
 	<logicConf>
 		<resource resName="Micro Basic" resIdent="BMX P34 2000 03.20">
 			<taskDesc task="MAST" taskType="cyclic" valueType="0" maxExecTime="250">
-				<sectionDesc name="Progr1" SectionOrder="1"></sectionDesc>
-				<sectionDesc name="Progr2" SectionOrder="2"></sectionDesc>
+				<sectionDesc name="Progr1" FMName="MF1" FMId="f8K" FMOrder="0x0001" SectionOrder="1"></sectionDesc>
+				<sectionDesc name="Progr2" FMName="MF1_1" FMId="fcK" FMOrder="0x0001" SectionOrder="2"></sectionDesc>
 			</taskDesc>
-			<FMDesc name="Projet Fonctionnel" FMId="ROOT"></FMDesc>
+			<taskDesc task="FAST" taskType="periodic" valueType="5" maxExecTime="100">
+				<sectionDesc name="ProgrFast1" FMName="MF2" FMId="100K" FMOrder="0x0001" SectionOrder="1"></sectionDesc>
+				<sectionDesc name="ProgrFast2" SectionOrder="2"></sectionDesc>
+			</taskDesc>
+			<FMDesc name="Projet Fonctionnel" FMId="ROOT">
+				<FMDesc name="MF1" FMId="f8K">
+					<FMDesc name="MF1_1" FMId="fcK"></FMDesc>
+				</FMDesc>
+				<FMDesc name="MF2" FMId="100K"></FMDesc>
+			</FMDesc>
 		</resource>
 	</logicConf>
 	<program>
 		<identProgram name="Progr1" type="section" task="MAST"></identProgram>
 		<STSource>OBJ1 (IN1 := true);
-		</STSource>
+</STSource>
 	</program>
 	<program>
 		<identProgram name="Progr2" type="section" task="MAST"></identProgram>
@@ -113,6 +122,17 @@
 					</descriptionFFB>
 				</FFBBlock>
 			</networkFBD>
+		</FBDSource>
+	</program>
+	<program>
+		<identProgram name="ProgrFast1" type="section" task="FAST"></identProgram>
+		<STSource>
+		</STSource>
+	</program>
+	<program>
+		<identProgram name="ProgrFast2" type="section" task="FAST"></identProgram>
+		<FBDSource nbRows="24" nbColumns="36">
+			<networkFBD></networkFBD>
 		</FBDSource>
 	</program>
 	<IOScreen version="V1.0"></IOScreen>

@@ -29,23 +29,23 @@ namespace ControlExpert.Xef
         {
             var fileHeader = xef.Elements()
                     .Elements("fileHeader")
-                    .SingleOrDefault();
+                    .Single();
 
-            var datetimeAtr = fileHeader?.Attribute("dateTime")?.Value ?? string.Empty;
+            var datetimeAtr = fileHeader.Attribute("dateTime")?.Value;
             var datetime = Convert.ToDateTime(datetimeAtr
                 .Replace("date_and_time#", "")
                 .Replace("dt#", "")
                 .Replace('-', ' '));
 
-            var dtdVersionAtr = fileHeader?.Attribute("DTDVersion")?.Value ?? string.Empty;
+            var dtdVersionAtr = fileHeader.Attribute("DTDVersion")?.Value;
             var dtdVersion = Convert.ToInt32(dtdVersionAtr);
 
             return new FileHeader
             {
-                Company = fileHeader?.Attribute("company")?.Value ?? string.Empty,
-                Product = fileHeader?.Attribute("product")?.Value ?? string.Empty,
+                Company = fileHeader.Attribute("company").Value,
+                Product = fileHeader.Attribute("product").Value,
                 DateTime = datetime,
-                Content = fileHeader?.Attribute("content")?.Value ?? string.Empty,
+                Content = fileHeader.Attribute("content").Value,
                 DtdVersion = dtdVersion
             };
         }

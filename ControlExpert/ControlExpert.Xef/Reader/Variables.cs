@@ -37,9 +37,9 @@ namespace ControlExpert.Xef
 
                     return new Variables
                     {
-                        Name = variable?.Attribute("name")?.Value ?? string.Empty,
-                        TypeName = variable?.Attribute("typeName")?.Value ?? string.Empty,
-                        Comment = variable?.Element("comment")?.Value ?? string.Empty,
+                        Name = variable.Attribute("name")?.Value,
+                        TypeName = variable.Attribute("typeName")?.Value,
+                        Comment = variable.Element("comment")?.Value,
                         Attributes = attributes
                     };
                 });

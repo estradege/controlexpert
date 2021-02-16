@@ -29,20 +29,20 @@ namespace ControlExpert.Xef
         {
             var contentHeader = xef.Elements()
                     .Elements("contentHeader")
-                    .SingleOrDefault();
+                    .Single();
 
-            var datetimeAtr = contentHeader?.Attribute("dateTime")?.Value ?? string.Empty;
+            var datetimeAtr = contentHeader.Attribute("dateTime").Value;
             var datetime = Convert.ToDateTime(datetimeAtr
                 .Replace("date_and_time#", "")
                 .Replace("dt#", "")
                 .Replace('-', ' '));
 
-            var versionAtr = contentHeader?.Attribute("version")?.Value ?? string.Empty;
+            var versionAtr = contentHeader.Attribute("version").Value;
             var version = new Version(versionAtr);
 
             return new ContentHeader
             {
-                Name = contentHeader?.Attribute("name")?.Value ?? string.Empty,
+                Name = contentHeader.Attribute("name").Value,
                 Version = version,
                 DateTime = datetime
             };
