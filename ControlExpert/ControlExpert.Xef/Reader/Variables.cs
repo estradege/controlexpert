@@ -18,28 +18,33 @@ namespace ControlExpert.Xef
         /// <returns></returns>
         public async Task<IEnumerable<Variables>> GetVariablesAsync()
         {
-            return await Task.Run(() =>
-            {
-                var variables = xef.Elements()
-                    .Elements("dataBlock")
-                    .Elements("variables")
-                    .Select(variable =>
+            return await Task.Run(() => GetVariables());
+        }
+
+        /// <summary>
+        /// Get [variables] tags
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Variables> GetVariables()
+        {
+            var variables = xef.Elements()
+                .Elements("dataBlock")
+                .Elements("variables")
+                .Select(variable =>
+                {
+                    var attributesElm = variable.Elements("attribute");
+                    var attributes = attributesElm?.ToDictionary(a => a.Attribute("name").Value, a => a.Attribute("value").Value);
+
+                    return new Variables
                     {
-                        var attributesElm = variable.Elements("attribute");
-                        var attributes = attributesElm?.ToDictionary(a => a.Attribute("name").Value, a => a.Attribute("value").Value);
+                        Name = variable?.Attribute("name")?.Value ?? string.Empty,
+                        TypeName = variable?.Attribute("typeName")?.Value ?? string.Empty,
+                        Comment = variable?.Element("comment")?.Value ?? string.Empty,
+                        Attributes = attributes
+                    };
+                });
 
-                        return new Variables
-                        {
-                            Name = variable?.Attribute("name")?.Value ?? string.Empty,
-                            TypeName = variable?.Attribute("typeName")?.Value ?? string.Empty,
-                            Comment = variable?.Element("comment")?.Value ?? string.Empty,
-                            Attributes = attributes
-                        };
-                    });
-
-
-                return variables;
-            });
+            return variables;
         }
     }
 }
