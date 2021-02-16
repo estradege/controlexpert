@@ -57,5 +57,23 @@ namespace ControlExpert.Xef
         {
             xef = XDocument.Load(path);
         }
+
+        /// <summary>
+        /// Find the first occurance of an object
+        /// </summary>
+        /// <param name="name">The object's name</param>
+        /// <returns></returns>
+        /// <remarks>
+        /// The search order is :
+        /// 1- Search <paramref name="name"/> as a FB in a FBD source
+        /// 2- Search <paramref name="name"/> as a FB in a ST source
+        /// 3- Search <paramref name="name"/> as a variable (write) in a FBD source
+        /// 4- Search <paramref name="name"/> as a variable (read) in a FBD source
+        /// 5- Search <paramref name="name"/> as a variable in a ST source
+        /// </remarks>
+        public SectionDesc FindFirst(string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
