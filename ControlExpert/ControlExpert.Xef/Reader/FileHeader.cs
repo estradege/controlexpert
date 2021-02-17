@@ -16,9 +16,9 @@ namespace ControlExpert.Xef
         /// Get [fileHeader] tag
         /// </summary>
         /// <returns></returns>
-        public async Task<FileHeader> GetFileHeaderAsync()
+        public Task<FileHeader> GetFileHeaderAsync()
         {
-            return await Task.Run(() => GetFileHeader());
+            return Task.Run(() => GetFileHeader());
         }
 
         /// <summary>

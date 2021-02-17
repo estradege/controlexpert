@@ -16,9 +16,9 @@ namespace ControlExpert.Xef
         /// Get [variables] tags
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<Variables>> GetVariablesAsync()
+        public Task<IEnumerable<Variables>> GetVariablesAsync()
         {
-            return await Task.Run(() => GetVariables());
+            return Task.Run(() => GetVariables());
         }
 
         /// <summary>

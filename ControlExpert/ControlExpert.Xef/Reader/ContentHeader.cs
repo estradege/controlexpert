@@ -16,9 +16,9 @@ namespace ControlExpert.Xef
         /// Get [contentHeader] tag
         /// </summary>
         /// <returns></returns>
-        public async Task<ContentHeader> GetContentHeaderAsync()
+        public Task<ContentHeader> GetContentHeaderAsync()
         {
-            return await Task.Run(() => GetContentHeader());
+            return Task.Run(() => GetContentHeader());
         }
 
         /// <summary>

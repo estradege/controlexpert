@@ -1,5 +1,7 @@
 ﻿using ControlExpert.Xef.Models;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO.Compression;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,18 +20,18 @@ namespace ControlExpert.Xef
         /// Load ZEF Exchange file
         /// </summary>
         /// <param name="path">ZEF file path</param>
-        public async Task LoadZefAsync(string path)
+        public Task LoadZefAsync(string path)
         {
-            await Task.Run(() => LoadZef(path));
+            return Task.Run(() => LoadZef(path));
         }
 
         /// <summary>
         /// Load XEF Exchange file
         /// </summary>
         /// <param name="path">XEF file path</param>
-        public async Task LoadXefAsync(string path)
+        public Task LoadXefAsync(string path)
         {
-            await Task.Run(() => LoadXef(path));
+            return Task.Run(() => LoadXef(path));
         }
 
         /// <summary>
@@ -59,9 +61,9 @@ namespace ControlExpert.Xef
         }
 
         /// <summary>
-        /// Find the first occurance of an object
+        /// Find the first occurance of a variable
         /// </summary>
-        /// <param name="name">The object's name</param>
+        /// <param name="name">The variable's name</param>
         /// <returns></returns>
         /// <remarks>
         /// The search order is :
@@ -71,9 +73,114 @@ namespace ControlExpert.Xef
         /// 4- Search <paramref name="name"/> as a variable (read) in a FBD source
         /// 5- Search <paramref name="name"/> as a variable in a ST source
         /// </remarks>
-        public SectionDesc FindFirst(string name)
+        public Task<IdentProgram> FindFirstOrDefaultAsync(string name)
         {
-            throw new NotImplementedException();
+            return Task.Run(() => FindFirstOrDefault(name));
+        }
+
+        /// <summary>
+        /// Find the first occurance of a variable
+        /// </summary>
+        /// <param name="name">The variable's name</param>
+        /// <returns></returns>
+        /// <remarks>
+        /// The search order is :
+        /// 1- Search <paramref name="name"/> as a FB in a FBD source
+        /// 2- Search <paramref name="name"/> as a FB in a ST source
+        /// 3- Search <paramref name="name"/> as a variable (write) in a FBD source
+        /// 4- Search <paramref name="name"/> as a variable (read) in a FBD source
+        /// 5- Search <paramref name="name"/> as a variable in a ST source
+        /// </remarks>
+        public IdentProgram FindFirstOrDefault(string name)
+        {
+            name = name.ToLower();
+            IdentProgram program = null;
+
+            #region #1
+
+            var fbdSource = GetFbdSource();
+
+            if (program == null)
+            {
+                program = fbdSource.FirstOrDefault(fbd =>
+                {
+                    return fbd.NetworkFbd
+                        .Elements("FFBBlock")
+                        .Attributes("instanceName")
+                        .Any(instanceName => instanceName.Value.ToLower() == name);
+
+                })?.IdentProgram;
+            }
+
+            #endregion
+            #region #2
+
+            var stSource = GetStSource();
+
+            if (program == null)
+            {
+                program = stSource.FirstOrDefault(st =>
+                {
+                    return st.Content
+                        .Replace(" ", "")
+                        .ToLower()
+                        .Contains($"{name}(");
+
+                })?.IdentProgram;
+            }
+
+            #endregion
+            #region #3
+
+            if (program == null)
+            {
+                program = fbdSource.FirstOrDefault(fbd =>
+                {
+                    return fbd.NetworkFbd
+                        .Elements("FFBBlock")
+                        .Elements("descriptionFFB")
+                        .Elements("outputVariable")
+                        .Any(outputVariable => outputVariable.Attribute("effectiveParameter")?.Value.ToLower() == name);
+
+                })?.IdentProgram;
+
+            }
+
+            #endregion
+            #region #3
+
+            if (program == null)
+            {
+                program = fbdSource.FirstOrDefault(fbd =>
+                {
+                    return fbd.NetworkFbd
+                        .Elements("FFBBlock")
+                        .Elements("descriptionFFB")
+                        .Elements("inputVariable")
+                        .Any(inputVariable => inputVariable.Attribute("effectiveParameter")?.Value.ToLower() == name);
+
+                })?.IdentProgram;
+
+            }
+
+            #endregion
+            #region #5
+
+            if (program == null)
+            {
+                program = stSource.FirstOrDefault(st =>
+                {
+                    return st.Content
+                        .Replace(" ", "")
+                        .ToLower()
+                        .Contains(name);
+
+                })?.IdentProgram;
+            }
+
+            #endregion
+
+            return program;
         }
     }
 }

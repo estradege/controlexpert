@@ -17,9 +17,9 @@ namespace ControlExpert.Xef
         /// Get [FMDesc] tags
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<FmDesc>> GetFmDescAsync()
+        public Task<IEnumerable<FmDesc>> GetFmDescAsync()
         {
-            return await Task.Run(() => GetFmDesc());
+            return Task.Run(() => GetFmDesc());
         }
 
         /// <summary>

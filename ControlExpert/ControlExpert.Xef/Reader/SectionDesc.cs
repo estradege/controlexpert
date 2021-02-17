@@ -17,9 +17,9 @@ namespace ControlExpert.Xef
         /// Get [sectionDesc] tags
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<SectionDesc>> GetSectionDescAsync()
+        public Task<IEnumerable<SectionDesc>> GetSectionDescAsync()
         {
-            return await Task.Run(() => GetSectionDesc());
+            return Task.Run(() => GetSectionDesc());
         }
 
         /// <summary>
