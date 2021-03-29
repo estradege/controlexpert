@@ -13,7 +13,7 @@ namespace ControlExpert.Xef
     public partial class XefReader
     {
         /// <summary>
-        /// Get [fileHeader] tag
+        /// Get [FileHeader] tag
         /// </summary>
         /// <returns></returns>
         public Task<FileHeader> GetFileHeaderAsync()
@@ -22,7 +22,7 @@ namespace ControlExpert.Xef
         }
 
         /// <summary>
-        /// Get [fileHeader] tag
+        /// Get [FileHeader] tag
         /// </summary>
         /// <returns></returns>
         public FileHeader GetFileHeader()
@@ -30,13 +30,7 @@ namespace ControlExpert.Xef
             var fileHeader = xef.Elements()
                     .Elements("fileHeader")
                     .Single();
-
-            var datetimeAtr = fileHeader.Attribute("dateTime")?.Value;
-            var datetime = Convert.ToDateTime(datetimeAtr
-                .Replace("date_and_time#", "")
-                .Replace("dt#", "")
-                .Replace('-', ' '));
-
+                       
             var dtdVersionAtr = fileHeader.Attribute("DTDVersion")?.Value;
             var dtdVersion = Convert.ToInt32(dtdVersionAtr);
 
@@ -44,7 +38,7 @@ namespace ControlExpert.Xef
             {
                 Company = fileHeader.Attribute("company").Value,
                 Product = fileHeader.Attribute("product").Value,
-                DateTime = datetime,
+                DateTime = DatetimeAttributeOrDefault(fileHeader),
                 Content = fileHeader.Attribute("content").Value,
                 DtdVersion = dtdVersion
             };

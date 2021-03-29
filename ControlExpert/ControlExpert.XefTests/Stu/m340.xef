@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <FEFExchangeFile>
-	<fileHeader company="Schneider Automation" product="Control Expert V14.1 - 191122A" dateTime="date_and_time#2021-2-17-19:26:28" content="Fichier source projet" DTDVersion="41"></fileHeader>
+	<fileHeader company="Schneider Automation" product="Control Expert V15.0 - 201016B" dateTime="date_and_time#2021-3-29-21:51:58" content="Fichier source projet" DTDVersion="41"></fileHeader>
 	<contentHeader name="Projet" version="0.0.2" dateTime="date_and_time#2021-2-16-17:52:24"></contentHeader>
 	<commParameters>
 		<PLCAddress address="SYS" media="USB" nbTries="3" timeout="3000" highSpeed="0"></PLCAddress>
@@ -10,20 +10,20 @@
 	<IOConf>
 		<PLC autoRun="false" MWInitZero="true" ColdStartOnly="false" ccotfActive="false" numberInternalWord="1024" numberConstantWord="256" numberInternalBit="512" CPU_DoNotSupportQtmDROP="0">
 			<partItem family="Micro Basic" partNumber="BMXP342000" vendorName="Schneider Automation" version="03.20"></partItem>
-			<equipInfo topoAddress="\0.0\0.0" position="0"></equipInfo>
+			<equipInfo topoAddress="\0.0\0.0" position="0" NodeGuid="{2495EF9D-9FCC-44D2-946A-C1402EB6AE2C}"></equipInfo>
 			<configATS>
 				<busATS name="XBusMicro">
-					<equipInfo topoAddress="\0" position="0"></equipInfo>
+					<equipInfo topoAddress="\0" position="0" NodeGuid="{065EAF9C-F3C1-45A7-8FAB-87C5BC8E7196}"></equipInfo>
 					<rackATS>
 						<partItem family="Rack" partNumber="BMXXBP0800" vendorName="Schneider Automation" version="01.00"></partItem>
-						<equipInfo topoAddress="\0.0\0" position="0"></equipInfo>
+						<equipInfo topoAddress="\0.0\0" position="0" NodeGuid="{FB76E5CE-ED0C-4A74-95F6-6D75F19A7687}"></equipInfo>
 						<powerSupply>
 							<partItem family="Supply" partNumber="BMXCPS2000" vendorName="Schneider Automation" version="01.00"></partItem>
-							<equipInfo topoAddress="\0.0\0.(P) (P)" position="-1"></equipInfo>
+							<equipInfo topoAddress="\0.0\0.(P) (P)" position="-1" NodeGuid="{35610164-141D-47F6-A438-10FEE1A3DA61}"></equipInfo>
 						</powerSupply>
 						<moduleATS UCMod="true">
 							<partItem family="Micro Basic" partNumber="BMXP342000" vendorName="Schneider Automation" version="03.20"></partItem>
-							<equipInfo topoAddress="\0.0\0.0" position="0"></equipInfo>
+							<equipInfo topoAddress="\0.0\0.0" position="0" NodeGuid="{2495EF9D-9FCC-44D2-946A-C1402EB6AE2C}"></equipInfo>
 							<configModule>
 								<channelATS ASFCatKey="ModbusSerialPort" task="MAST" number="0">
 									<descFB code="0" version="255"></descFB>
@@ -46,137 +46,62 @@
 			</configATS>
 		</PLC>
 	</IOConf>
-	<EFBSource nameOfEFBType="TON" version="1.00" dateTime="dt#2019-10-11-17:13:45">
-		<comment>On delay</comment>
-		<attribute name="TypeDescriptiveForm" value="  The function block is used as the On delay.  When the function block is called for the first time, the initial state of ET is &quot;0&quot;.&#xA;"></attribute>
-		<attribute name="IsTypeHidden" value="FALSE"></attribute>
-		<attribute name="IsTypeDiagnostic" value="FALSE"></attribute>
-		<attribute name="TypeCodeCheckSumString" value="B257"></attribute>
-		<attribute name="TypeSignatureCheckSumString" value="16D2"></attribute>
-		<attribute name="TypeDataDicSubfieldsCount" value="5"></attribute>
-		<ExternalToolsOnly>
-			<inputParameters>
-				<variables name="IN" typeName="BOOL">
-					<comment>Start delay</comment>
-					<attribute name="PositionPin" value="1"></attribute>
-					<attribute name="IsPinDiagnosticable" value="0"></attribute>
-				</variables>
-				<variables name="PT" typeName="TIME">
-					<comment>Preset delay time</comment>
-					<attribute name="PositionPin" value="2"></attribute>
-				</variables>
-			</inputParameters>
-			<outputParameters>
-				<variables name="Q" typeName="BOOL">
-					<comment>Delayed output</comment>
-					<attribute name="PositionPin" value="1"></attribute>
-				</variables>
-				<variables name="ET" typeName="TIME">
-					<comment>Internal time</comment>
-					<attribute name="PositionPin" value="2"></attribute>
-				</variables>
-			</outputParameters>
-		</ExternalToolsOnly>
-	</EFBSource>
-	<EFSource nameOfEFType="OR_BOOL" version="1.00" dateTime="dt#2019-10-11-17:45:50">
-		<comment>OR function</comment>
-		<attribute name="TypeDescriptiveForm" value=""></attribute>
-		<attribute name="IsTypeHidden" value="FALSE"></attribute>
-		<attribute name="TypeCodeCheckSumString" value="0000"></attribute>
-		<attribute name="TypeSignatureCheckSumString" value="DD29"></attribute>
-		<attribute name="TypeDataDicSubfieldsCount" value="4"></attribute>
-		<ExternalToolsOnly>
-			<inputParameters>
-				<variables name="IN1" typeName="BOOL">
-					<comment>Input bit sequence (Extensible)</comment>
-					<attribute name="PositionPin" value="1"></attribute>
-				</variables>
-				<variables name="nin" typeName="DWORD">
-					<comment></comment>
-					<attribute name="PositionPin" value="0"></attribute>
-					<attribute name="IsVariableHidden" value="-1"></attribute>
-				</variables>
-			</inputParameters>
-			<outputParameters>
-				<variables name="OUT" typeName="BOOL">
-					<comment>Output bit sequence</comment>
-					<attribute name="PositionPin" value="1"></attribute>
-				</variables>
-			</outputParameters>
-		</ExternalToolsOnly>
-	</EFSource>
-	<EFSource nameOfEFType="OR_WORD" version="1.00" dateTime="dt#2019-10-11-17:45:50">
-		<comment>OR function</comment>
-		<attribute name="TypeDescriptiveForm" value=""></attribute>
-		<attribute name="IsTypeHidden" value="FALSE"></attribute>
-		<attribute name="TypeCodeCheckSumString" value="0000"></attribute>
-		<attribute name="TypeSignatureCheckSumString" value="982E"></attribute>
-		<attribute name="TypeDataDicSubfieldsCount" value="4"></attribute>
-		<ExternalToolsOnly>
-			<inputParameters>
-				<variables name="IN1" typeName="WORD">
-					<comment>Input bit sequence (Extensible)</comment>
-					<attribute name="PositionPin" value="1"></attribute>
-				</variables>
-				<variables name="nin" typeName="DWORD">
-					<comment></comment>
-					<attribute name="PositionPin" value="0"></attribute>
-					<attribute name="IsVariableHidden" value="-1"></attribute>
-				</variables>
-			</inputParameters>
-			<outputParameters>
-				<variables name="OUT" typeName="WORD">
-					<comment>Output bit sequence</comment>
-					<attribute name="PositionPin" value="1"></attribute>
-				</variables>
-			</outputParameters>
-		</ExternalToolsOnly>
-	</EFSource>
+	<DDTSource DDTName="DDTTYPE2" version="0.00" dateTime="dt#1990-01-01-00:00:00">
+		<comment>Ddt type 2</comment>
+		<attribute name="TypeSignatureCheckSumString" value="F0B8"></attribute>
+		<structure>
+			<variables name="Obj1" typeName="DDTTYPE1"></variables>
+			<variables name="Obj2" typeName="DDTTYPE1"></variables>
+		</structure>
+	</DDTSource>
+	<DDTSource DDTName="DDTTYPE1" version="0.00" dateTime="dt#1990-01-01-00:00:00">
+		<comment>Ddt type 1</comment>
+		<attribute name="TypeSignatureCheckSumString" value="F0B8"></attribute>
+		<structure>
+			<variables name="Var1" typeName="BOOL"></variables>
+			<variables name="Var2" typeName="REAL"></variables>
+			<variables name="Var3" typeName="ARRAY[0..10] OF DINT"></variables>
+		</structure>
+	</DDTSource>
 	<FBSource nameOfFBType="DFBTYPE1" version="0.01" dateTime="dt#2021-02-16-17:52:21">
 		<comment>Dfb type 1</comment>
-		<attribute name="TypeCodeCheckSumString" value="272B"></attribute>
+		<attribute name="TypeCodeCheckSumString"></attribute>
 		<attribute name="TypeSignatureCheckSumString" value="40B6"></attribute>
-		<attribute name="TypeDataDicSubfieldsCount" value="3"></attribute>
 		<inputParameters>
 			<variables name="IN1" typeName="BOOL">
 				<comment>Input 1</comment>
 				<attribute name="PositionPin" value="1"></attribute>
 			</variables>
 		</inputParameters>
+		<inOutParameters>
+			<variables name="INOUT1" typeName="BOOL">
+				<comment>InOutput 1</comment>
+				<attribute name="PositionPin" value="2"></attribute>
+			</variables>
+		</inOutParameters>
 		<outputParameters>
 			<variables name="OUT1" typeName="BOOL">
 				<comment>Output 1</comment>
 				<attribute name="PositionPin" value="1"></attribute>
 			</variables>
 		</outputParameters>
+		<publicLocalVariables>
+			<variables name="Pub1" typeName="DDTTYPE1"></variables>
+			<variables name="Pub2" typeName="TOD"></variables>
+		</publicLocalVariables>
+		<privateLocalVariables>
+			<variables name="_priv1" typeName="DATE"></variables>
+		</privateLocalVariables>
+		<FBProgram name="code1">
+			<STSource>(*  *)
+</STSource>
+		</FBProgram>
+		<FBProgram name="code2">
+			<FBDSource nbRows="24" nbColumns="36">
+				<networkFBD></networkFBD>
+			</FBDSource>
+		</FBProgram>
 	</FBSource>
-	<EFSource nameOfEFType="OR" version="1.00" dateTime="dt#2019-10-11-17:45:50">
-		<comment>OR function</comment>
-		<attribute name="TypeDescriptiveForm" value=""></attribute>
-		<attribute name="IsTypeHidden" value="FALSE"></attribute>
-		<attribute name="TypeCodeCheckSumString" value="0000"></attribute>
-		<attribute name="TypeSignatureCheckSumString" value="198D"></attribute>
-		<attribute name="TypeDataDicSubfieldsCount" value="4"></attribute>
-		<ExternalToolsOnly>
-			<inputParameters>
-				<variables name="IN1" typeName="ANY_BIT">
-					<comment>Input bit sequence (Extensible)</comment>
-					<attribute name="PositionPin" value="1"></attribute>
-				</variables>
-				<variables name="nin" typeName="DWORD">
-					<comment></comment>
-					<attribute name="PositionPin" value="0"></attribute>
-					<attribute name="IsVariableHidden" value="-1"></attribute>
-				</variables>
-			</inputParameters>
-			<outputParameters>
-				<variables name="OUT" typeName="ANY_BIT">
-					<comment>Output bit sequence</comment>
-					<attribute name="PositionPin" value="1"></attribute>
-				</variables>
-			</outputParameters>
-		</ExternalToolsOnly>
-	</EFSource>
 	<dataBlock>
 		<variables name="OBJ1" typeName="DFBTYPE1">
 			<comment>Object 1</comment>
@@ -196,105 +121,36 @@
 			<comment>Object 2</comment>
 			<attribute name="IsVariableHMI" value="-1"></attribute>
 		</variables>
-		<variables name="BIT0" typeName="BOOL">
-			<comment>Bit 0</comment>
-		</variables>
-		<variables name="BIT1" typeName="BOOL">
-			<comment>Bit 1</comment>
-		</variables>
-		<variables name="BIT2" typeName="BOOL">
-			<comment>Bit 2</comment>
-		</variables>
-		<variables name="BIT3" typeName="BOOL">
-			<comment>Bit 3</comment>
-		</variables>
-		<variables name="BIT4" typeName="BOOL">
-			<comment>Bit 4</comment>
-		</variables>
-		<variables name="BIT5" typeName="BOOL">
-			<comment>Bit 5</comment>
-		</variables>
-		<variables name="TON_1" typeName="TON"></variables>
 	</dataBlock>
 	<Motion></Motion>
 	<logicConf>
 		<resource resName="Micro Basic" resIdent="BMX P34 2000 03.20">
 			<taskDesc task="MAST" taskType="cyclic" valueType="0" maxExecTime="250">
-				<sectionDesc name="Progr1" FMName="MF1" FMId="f8K" FMOrder="0x0001" SectionOrder="1"></sectionDesc>
-				<sectionDesc name="Progr2" FMName="MF1_1" FMId="fcK" FMOrder="0x0001" SectionOrder="2"></sectionDesc>
+				<sectionDesc name="Progr1" SectionOrder="1"></sectionDesc>
+				<sectionDesc name="Prog2" SectionOrder="2"></sectionDesc>
 			</taskDesc>
-			<taskDesc task="FAST" taskType="periodic" valueType="5" maxExecTime="100">
-				<sectionDesc name="ProgrFast1" FMName="MF2" FMId="100K" FMOrder="0x0001" SectionOrder="1"></sectionDesc>
-				<sectionDesc name="ProgrFast2" SectionOrder="2"></sectionDesc>
-			</taskDesc>
-			<FMDesc name="Projet Fonctionnel" FMId="ROOT">
-				<FMDesc name="MF1" FMId="f8K">
-					<FMDesc name="MF1_1" FMId="fcK"></FMDesc>
-				</FMDesc>
-				<FMDesc name="MF2" FMId="100K"></FMDesc>
-			</FMDesc>
+			<FMDesc name="Projet Fonctionnel" FMId="ROOT"></FMDesc>
 		</resource>
 	</logicConf>
 	<program>
-		<identProgram name="Progr1" type="section" task="MAST"></identProgram>
-		<STSource>OBJ1 (IN1 := BIT0,
-      OUT1 =&gt; BIT1);
-		</STSource>
+		<identProgram name="Progr1" type="section" task="MAST" SectionOrder="1"></identProgram>
+		<STSource>OBJ1 (IN1 := true);
+</STSource>
 	</program>
 	<program>
-		<identProgram name="Progr2" type="section" task="MAST"></identProgram>
+		<identProgram name="Prog2" type="section" task="MAST" SectionOrder="2"></identProgram>
 		<FBDSource nbRows="24" nbColumns="36">
 			<networkFBD>
 				<FFBBlock instanceName="OBJ2" typeName="DFBTYPE1" additionnalPinNumber="0" enEnO="false" width="7" height="5">
 					<objPosition posX="13" posY="2"></objPosition>
 					<descriptionFFB execAfter="">
 						<inputVariable invertedPin="false" formalParameter="EN"></inputVariable>
-						<inputVariable invertedPin="false" formalParameter="IN1" effectiveParameter="BIT2"></inputVariable>
-						<outputVariable invertedPin="false" formalParameter="ENO"></outputVariable>
-						<outputVariable invertedPin="false" formalParameter="OUT1" effectiveParameter="BIT3"></outputVariable>
-					</descriptionFFB>
-				</FFBBlock>
-				<FFBBlock instanceName="TON_1" typeName="TON" additionnalPinNumber="0" enEnO="false" width="7" height="6">
-					<objPosition posX="13" posY="11"></objPosition>
-					<descriptionFFB execAfter="">
-						<inputVariable invertedPin="false" formalParameter="EN"></inputVariable>
-						<inputVariable invertedPin="false" formalParameter="IN" effectiveParameter="OBJ2.OUT1"></inputVariable>
-						<inputVariable invertedPin="false" formalParameter="PT" effectiveParameter="t#30m"></inputVariable>
-						<outputVariable invertedPin="false" formalParameter="ENO"></outputVariable>
-						<outputVariable invertedPin="false" formalParameter="Q"></outputVariable>
-						<outputVariable invertedPin="false" formalParameter="ET"></outputVariable>
-					</descriptionFFB>
-				</FFBBlock>
-				<FFBBlock instanceName=".1" typeName="OR" additionnalPinNumber="0" enEnO="false" width="7" height="6">
-					<objPosition posX="30" posY="11"></objPosition>
-					<descriptionFFB execAfter="">
-						<inputVariable invertedPin="false" formalParameter="EN"></inputVariable>
 						<inputVariable invertedPin="false" formalParameter="IN1"></inputVariable>
-						<inputVariable invertedPin="false" formalParameter="IN2" effectiveParameter="%S6"></inputVariable>
 						<outputVariable invertedPin="false" formalParameter="ENO"></outputVariable>
-						<outputVariable invertedPin="false" formalParameter="OUT"></outputVariable>
+						<outputVariable invertedPin="false" formalParameter="OUT1"></outputVariable>
 					</descriptionFFB>
 				</FFBBlock>
-				<linkFB>
-					<linkSource parentObjectName="TON_1" pinName="Q">
-						<objPosition posX="19" posY="15"></objPosition>
-					</linkSource>
-					<linkDestination parentObjectName=".1" pinName="IN1">
-						<objPosition posX="30" posY="15"></objPosition>
-					</linkDestination>
-				</linkFB>
 			</networkFBD>
-		</FBDSource>
-	</program>
-	<program>
-		<identProgram name="ProgrFast1" type="section" task="FAST"></identProgram>
-		<STSource>BIT4 := BIT5;
-</STSource>
-	</program>
-	<program>
-		<identProgram name="ProgrFast2" type="section" task="FAST"></identProgram>
-		<FBDSource nbRows="24" nbColumns="36">
-			<networkFBD></networkFBD>
 		</FBDSource>
 	</program>
 	<IOScreen version="V1.0"></IOScreen>
@@ -350,6 +206,7 @@
 		<entryvalue ident="unity.animTable" value="0"></entryvalue>
 		<entryvalue ident="unity.ETSManagementMode" value="1"></entryvalue>
 		<entryvalue ident="unity.OptimizeOnlineChange" value="0"></entryvalue>
+		<entryvalue ident="unity.dataMemoryProtect" value="0"></entryvalue>
 		<!--group unity.PLCdiagnostics-->
 		<entryvalue ident="unity.application" value="0"></entryvalue>
 		<entryvalue ident="unity.applevel" value="0"></entryvalue>
@@ -442,6 +299,8 @@
 		<entryvalue ident="unity.setStep" value="1"></entryvalue>
 		<entryvalue ident="unity.parallelBranches" value="1"></entryvalue>
 		<entryvalue ident="unity.multiEvolution" value="1"></entryvalue>
+		<!--group unity.SFCSingleToken-->
+		<entryvalue ident="unity.ActionSection" value="0"></entryvalue>
 		<!--group unity.ST-->
 		<entryvalue ident="unity.jumpAndLabel" value="0"></entryvalue>
 		<!--group unity.LL984-->

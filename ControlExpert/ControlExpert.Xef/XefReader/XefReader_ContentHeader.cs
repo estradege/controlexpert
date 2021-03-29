@@ -1,6 +1,4 @@
 ﻿using ControlExpert.Xef.Models;
-using System;
-using System.IO.Compression;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -13,7 +11,7 @@ namespace ControlExpert.Xef
     public partial class XefReader
     {
         /// <summary>
-        /// Get [contentHeader] tag
+        /// Get [ContentHeader] tag
         /// </summary>
         /// <returns></returns>
         public Task<ContentHeader> GetContentHeaderAsync()
@@ -22,7 +20,7 @@ namespace ControlExpert.Xef
         }
 
         /// <summary>
-        /// Get [contentHeader] tag
+        /// Get [ContentHeader] tag
         /// </summary>
         /// <returns></returns>
         public ContentHeader GetContentHeader()
@@ -31,20 +29,11 @@ namespace ControlExpert.Xef
                     .Elements("contentHeader")
                     .Single();
 
-            var datetimeAtr = contentHeader.Attribute("dateTime").Value;
-            var datetime = Convert.ToDateTime(datetimeAtr
-                .Replace("date_and_time#", "")
-                .Replace("dt#", "")
-                .Replace('-', ' '));
-
-            var versionAtr = contentHeader.Attribute("version").Value;
-            var version = new Version(versionAtr);
-
             return new ContentHeader
             {
                 Name = contentHeader.Attribute("name").Value,
-                Version = version,
-                DateTime = datetime
+                Version = VersionAttributeOrDefault(contentHeader),
+                DateTime = DatetimeAttributeOrDefault(contentHeader)
             };
         }
     }

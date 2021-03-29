@@ -3,9 +3,9 @@
 namespace ControlExpert.Xef.Models
 {
     /// <summary>
-    /// [variables] tag
+    /// [Variables] tag
     /// </summary>
-    public class Variables
+    public class Variable
     {
         public string Name { get; set; }
         public string TypeName { get; set; }

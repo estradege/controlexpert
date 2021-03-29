@@ -3,7 +3,7 @@
 namespace ControlExpert.Xef.Models
 {
     /// <summary>
-    /// [sectionDesc] tag
+    /// [SectionDesc] tag
     /// </summary>
     public class SectionDesc
     {

@@ -14,7 +14,7 @@ namespace ControlExpert.Xef
     public partial class XefReader
     {
         /// <summary>
-        /// Get [sectionDesc] tags
+        /// Get [SectionDesc] tags
         /// </summary>
         /// <returns></returns>
         public Task<IEnumerable<SectionDesc>> GetSectionDescAsync()
@@ -23,7 +23,7 @@ namespace ControlExpert.Xef
         }
 
         /// <summary>
-        /// Get [sectionDesc] tags
+        /// Get [SectionDesc] tags
         /// </summary>
         /// <returns></returns>
         public IEnumerable<SectionDesc> GetSectionDesc()

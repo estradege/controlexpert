@@ -3,7 +3,7 @@
 namespace ControlExpert.Xef.Models
 {
     /// <summary>
-    /// [identProgram] tag
+    /// [IdentProgram] tag
     /// </summary>
     public class IdentProgram
     {

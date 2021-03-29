@@ -3,7 +3,7 @@
 namespace ControlExpert.Xef.Models
 {
     /// <summary>
-    /// [fileHeader] tag
+    /// [FileHeader] tag
     /// </summary>
     public class FileHeader
     {

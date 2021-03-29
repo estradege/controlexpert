@@ -1,6 +1,5 @@
 ﻿using ControlExpert.Xef.Models;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO.Compression;
 using System.Linq;
@@ -181,6 +180,45 @@ namespace ControlExpert.Xef
             #endregion
 
             return program;
+        }
+
+        private DateTime DatetimeAttributeOrDefault(XElement element, string attribute = "dateTime")
+        {
+            var datetimeAtr = element.Attribute(attribute)?.Value;
+            if (datetimeAtr == null)
+            {
+                return default(DateTime);
+            }
+            else
+            {
+                datetimeAtr = datetimeAtr
+                    .Replace("date_and_time#", "")
+                    .Replace("dt#", "")
+                    .Replace('-', ' ');
+
+                return Convert.ToDateTime(datetimeAtr);
+            }
+        }
+
+        private Version VersionAttributeOrDefault(XElement element, string attribute = "version")
+        {
+            var versionAtr = element.Attribute(attribute)?.Value;
+            if (versionAtr == null)
+            {
+                return default(Version);
+            }
+            else
+            {
+                return new Version(versionAtr);
+            }
+        }
+
+        private Dictionary<string, string> AttributesOrDefault(XElement element)
+        {
+            var attributesElm = element.Elements("attribute");
+            var attributes = attributesElm?.ToDictionary(a => a.Attribute("name").Value, a => a.Attribute("value").Value);
+
+            return attributes;
         }
     }
 }

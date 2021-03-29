@@ -3,7 +3,7 @@
 namespace ControlExpert.Xef.Models
 {
     /// <summary>
-    /// [contentHeader] tag
+    /// [ContentHeader] tag
     /// </summary>
     public class ContentHeader
     {
