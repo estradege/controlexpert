@@ -38,7 +38,7 @@ namespace ControlExpert.Xef
             {
                 Company = fileHeader.Attribute("company").Value,
                 Product = fileHeader.Attribute("product").Value,
-                DateTime = DatetimeAttributeOrDefault(fileHeader),
+                DateTime = GetDatetimeOrDefault(fileHeader),
                 Content = fileHeader.Attribute("content").Value,
                 DtdVersion = dtdVersion
             };

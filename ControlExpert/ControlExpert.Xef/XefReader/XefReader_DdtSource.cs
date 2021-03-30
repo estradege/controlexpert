@@ -33,11 +33,11 @@ namespace ControlExpert.Xef
                     return new DdtSource
                     {
                         DdtName = ddt.Attribute("DDTName")?.Value,
-                        Version = VersionAttributeOrDefault(ddt),
-                        DateTime = DatetimeAttributeOrDefault(ddt),
+                        Version = GetVersionOrDefault(ddt),
+                        DateTime = GetDatetimeOrDefault(ddt),
                         Comment = ddt.Element("comment")?.Value,
-                        Attributes = AttributesOrDefault(ddt),
-                        Structure = VariableElementsToVariables(ddt.Elements("structure"))
+                        Attributes = GetAttributesOrDefault(ddt),
+                        Structure = GetVariables(ddt.Elements("structure"))
                     };
                 });
 

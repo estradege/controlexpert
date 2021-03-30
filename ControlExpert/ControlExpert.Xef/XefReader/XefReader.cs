@@ -182,7 +182,7 @@ namespace ControlExpert.Xef
             return program;
         }
 
-        private DateTime DatetimeAttributeOrDefault(XElement element, string attribute = "dateTime")
+        private DateTime GetDatetimeOrDefault(XElement element, string attribute = "dateTime")
         {
             var datetimeAtr = element.Attribute(attribute)?.Value;
             if (datetimeAtr == null)
@@ -200,7 +200,7 @@ namespace ControlExpert.Xef
             }
         }
 
-        private Version VersionAttributeOrDefault(XElement element, string attribute = "version")
+        private Version GetVersionOrDefault(XElement element, string attribute = "version")
         {
             var versionAtr = element.Attribute(attribute)?.Value;
             if (versionAtr == null)
@@ -213,7 +213,7 @@ namespace ControlExpert.Xef
             }
         }
 
-        private Dictionary<string, string> AttributesOrDefault(XElement element)
+        private Dictionary<string, string> GetAttributesOrDefault(XElement element)
         {
             var attributesElm = element.Elements("attribute");
             var attributes = attributesElm?.ToDictionary(a => a.Attribute("name").Value, a => a.Attribute("value").Value);

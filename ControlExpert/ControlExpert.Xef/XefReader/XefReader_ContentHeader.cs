@@ -26,14 +26,14 @@ namespace ControlExpert.Xef
         public ContentHeader GetContentHeader()
         {
             var contentHeader = xef.Elements()
-                    .Elements("contentHeader")
-                    .Single();
+                .Elements("contentHeader")
+                .Single();
 
             return new ContentHeader
             {
                 Name = contentHeader.Attribute("name").Value,
-                Version = VersionAttributeOrDefault(contentHeader),
-                DateTime = DatetimeAttributeOrDefault(contentHeader)
+                Version = GetVersionOrDefault(contentHeader),
+                DateTime = GetDatetimeOrDefault(contentHeader)
             };
         }
     }

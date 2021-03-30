@@ -32,16 +32,16 @@ namespace ControlExpert.Xef
                 {
                     return new FbSource
                     {
-                        NameOfFbType = fbsource.Attribute("name")?.Value,
-                        Version = VersionAttributeOrDefault(fbsource),
-                        DateTime = DatetimeAttributeOrDefault(fbsource),
+                        NameOfFbType = fbsource.Attribute("nameOfFBType")?.Value,
+                        Version = GetVersionOrDefault(fbsource),
+                        DateTime = GetDatetimeOrDefault(fbsource),
                         Comment = fbsource.Element("comment")?.Value,
-                        Attributes = AttributesOrDefault(fbsource),
-                        InputParameters = VariableElementsToVariables(fbsource.Elements("inputParameters")),
-                        OutputParameters = VariableElementsToVariables(fbsource.Elements("outputParameters")),
-                        InOutParameters = VariableElementsToVariables(fbsource.Elements("inOutParameters")),
-                        PublicLocalVariables = VariableElementsToVariables(fbsource.Elements("publicLocalVariables")),
-                        PrivateLocalVariables = VariableElementsToVariables(fbsource.Elements("privateLocalVariables")),
+                        Attributes = GetAttributesOrDefault(fbsource),
+                        InputParameters = GetVariables(fbsource.Elements("inputParameters")),
+                        OutputParameters = GetVariables(fbsource.Elements("outputParameters")),
+                        InOutParameters = GetVariables(fbsource.Elements("inOutParameters")),
+                        PublicLocalVariables = GetVariables(fbsource.Elements("publicLocalVariables")),
+                        PrivateLocalVariables = GetVariables(fbsource.Elements("privateLocalVariables")),
                     };
                 });
 

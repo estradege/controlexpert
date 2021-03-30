@@ -27,15 +27,13 @@ namespace ControlExpert.Xef
         /// <returns></returns>
         public IEnumerable<Variable> GetVariables()
         {
-            var variables = xef.Elements()
-                .Elements("dataBlock")
-                .Elements("variables");
-
-            return VariableElementsToVariables(variables);
+            var datablock = xef.Elements().Elements("dataBlock");
+            return GetVariables(datablock);
         }
 
-        private IEnumerable<Variable> VariableElementsToVariables(IEnumerable<XElement> variables)
+        private IEnumerable<Variable> GetVariables(IEnumerable<XElement> elements)
         {
+            var variables = elements.Elements("variables");
             return variables.Select(variable =>
             {
                 return new Variable
@@ -43,7 +41,7 @@ namespace ControlExpert.Xef
                     Name = variable.Attribute("name")?.Value,
                     TypeName = variable.Attribute("typeName")?.Value,
                     Comment = variable.Element("comment")?.Value,
-                    Attributes = AttributesOrDefault(variable)
+                    Attributes = GetAttributesOrDefault(variable)
                 };
             });
         }
