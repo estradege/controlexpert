@@ -25,8 +25,8 @@ namespace ControlExpert.XefReaderTests
             Assert.AreEqual(1, dfbtype1.InputParameters.Count());
             Assert.AreEqual(1, dfbtype1.OutputParameters.Count());
             Assert.AreEqual(1, dfbtype1.InOutParameters.Count());
-            Assert.AreEqual(2, dfbtype1.PublicLocalVariables.Count());
-            Assert.AreEqual(1, dfbtype1.PrivateLocalVariables.Count());
+            Assert.AreEqual(4, dfbtype1.PublicLocalVariables.Count());
+            Assert.AreEqual(4, dfbtype1.PrivateLocalVariables.Count());
         }
     }
 }
