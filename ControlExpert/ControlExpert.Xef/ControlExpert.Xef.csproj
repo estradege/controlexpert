@@ -8,7 +8,7 @@
     <Description>Schneider Electric Control Expert Toolkit</Description>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/estradege/controlexpert</PackageProjectUrl>
-    <Version>1.3.0</Version>
+    <Version>1.4.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

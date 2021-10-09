@@ -31,6 +31,60 @@ namespace ControlExpert.Xef
             return GetVariables(datablock);
         }
 
+        /// <summary>
+        /// Get [Variables] tags of process task for safety PAC
+        /// </summary>
+        /// <returns></returns>
+        public Task<IEnumerable<Variable>> GetVariablesProcessAsync()
+        {
+            return Task.Run(() => GetVariablesProcess());
+        }
+
+        /// <summary>
+        /// Get [Variables] tags of process task for safety PAC
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Variable> GetVariablesProcess()
+        {
+            var resource = xef.Elements()
+                .Elements("logicConf")
+                .Elements("resource")
+                .First(resource => resource.Attribute("resName")?.Value == "process");
+
+            var datablock = resource.Elements("privateLocalVariables");
+            datablock = datablock.Concat(resource.Elements("inputParameters"));
+            datablock = datablock.Concat(resource.Elements("outputParameters"));
+
+            return GetVariables(datablock);
+        }
+
+        /// <summary>
+        /// Get [Variables] tags of safe task for safety PAC
+        /// </summary>
+        /// <returns></returns>
+        public Task<IEnumerable<Variable>> GetVariablesSafeAsync()
+        {
+            return Task.Run(() => GetVariablesSafe());
+        }
+
+        /// <summary>
+        /// Get [Variables] tags of safe task for safety PAC
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Variable> GetVariablesSafe()
+        {
+            var resource = xef.Elements()
+                .Elements("logicConf")
+                .Elements("resource")
+                .First(resource => resource.Attribute("resName")?.Value == "safe");
+
+            var datablocks = resource.Elements("privateLocalVariables");
+            datablocks = datablocks.Concat(resource.Elements("inputParameters"));
+            datablocks = datablocks.Concat(resource.Elements("outputParameters"));
+
+            return GetVariables(datablocks);
+        }
+
         private IEnumerable<Variable> GetVariables(IEnumerable<XElement> elements)
         {   
             return elements

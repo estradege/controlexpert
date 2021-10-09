@@ -101,5 +101,25 @@ namespace ControlExpert.XefReaderTests
             var ton1 = variables.First(v => v.Name == "TON_1");
             Assert.Null(ton1.InstanceElements);
         }
+
+        [Test]
+        public async Task GetVariablesProcess()
+        {
+            var xef = new XefReader();
+            await xef.LoadZefAsync("Stu/m580-safety.zef");
+            var variables = await xef.GetVariablesProcessAsync();
+
+            Assert.GreaterOrEqual(variables.Count(), 2);
+        }
+
+        [Test]
+        public async Task GetVariablesSafe()
+        {
+            var xef = new XefReader();
+            await xef.LoadZefAsync("Stu/m580-safety.zef");
+            var variables = await xef.GetVariablesSafeAsync();
+
+            Assert.GreaterOrEqual(variables.Count(), 2);
+        }
     }
 }
