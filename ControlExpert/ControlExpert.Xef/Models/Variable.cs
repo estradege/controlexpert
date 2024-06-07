@@ -13,7 +13,7 @@ namespace ControlExpert.Xef.Models
         public string TopologicalAddress { get; set; }
         public string Comment { get; set; }
         public string VariableInit { get; set; }
-        public IDictionary<string, string>? Attributes { get; set; }
+        public Dictionary<string, string>? Attributes { get; set; }
         public IEnumerable<InstanceElement> InstanceElements { get; set; }
     }
 }

@@ -11,7 +11,7 @@
     <Description>Schneider Electric Control Expert Toolkit</Description>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/estradege/controlexpert</PackageProjectUrl>
-    <Version>1.5.0</Version>
+    <Version>1.5.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
