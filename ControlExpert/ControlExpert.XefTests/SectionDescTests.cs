@@ -24,7 +24,7 @@ namespace ControlExpert.XefReaderTests
             var progr1 = sectionDesc.First(s => s.Name == "Progr1");
             Assert.AreEqual("MAST", progr1.Task);
             Assert.AreEqual("MF1", progr1.FmName);
-            Assert.AreEqual("e3K", progr1.FmId);
+            Assert.AreEqual("186K", progr1.FmId);
             Assert.AreEqual("0x0001", progr1.FmOrder);
             Assert.AreEqual(1, progr1.SectionOrder);
         }
