@@ -103,6 +103,19 @@ namespace ControlExpert.XefReaderTests
         }
 
         [Test]
+        public async Task GetVariablesM340_TopologicalAddress()
+        {
+            var xef = new XefReader();
+            await xef.LoadZefAsync("Stu/m340.zef");
+            var variables = await xef.GetVariablesAsync();
+
+            var ddt1 = variables.First(v => v.Name == "DDT1");
+            var ddt2 = variables.First(v => v.Name == "DDT2");
+            Assert.AreEqual("%MW100", ddt1.TopologicalAddress);
+            Assert.AreEqual("%MW125", ddt2.TopologicalAddress);
+        }
+
+        [Test]
         public async Task GetVariablesProcess()
         {
             var xef = new XefReader();
