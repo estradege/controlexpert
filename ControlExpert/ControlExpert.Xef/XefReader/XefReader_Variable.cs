@@ -96,6 +96,7 @@ namespace ControlExpert.Xef
                     {
                         Name = variable.Attribute("name")?.Value,
                         TypeName = variable.Attribute("typeName")?.Value,
+                        TopologicalAddress = variable.Attribute("topologicalAddress")?.Value,
                         Comment = variable.Element("comment")?.Value,
                         VariableInit = variableInit?.Attribute("value")?.Value,
                         Attributes = GetAttributesOrDefault(variable),

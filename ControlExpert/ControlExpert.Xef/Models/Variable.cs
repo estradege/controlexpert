@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace ControlExpert.Xef.Models
 {
@@ -11,9 +10,10 @@ namespace ControlExpert.Xef.Models
     {
         public string Name { get; set; }
         public string TypeName { get; set; }
+        public string TopologicalAddress { get; set; }
         public string Comment { get; set; }
         public string VariableInit { get; set; }
-        public Dictionary<string, string> Attributes { get; set; }
+        public IDictionary<string, string>? Attributes { get; set; }
         public IEnumerable<InstanceElement> InstanceElements { get; set; }
     }
 }
